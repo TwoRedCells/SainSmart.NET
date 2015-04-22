@@ -10,10 +10,6 @@ namespace RedCell.Devices.SainSmart
     /// </summary>
     public partial class RelaysControl : UserControl
     {
-        #region Fields
-        private UsbRelayBoard _board;
-        #endregion
-
         #region Initialization
         /// <summary>
         /// Initializes a new instance of the <see cref="RelaysControl"/> class.
@@ -28,10 +24,10 @@ namespace RedCell.Devices.SainSmart
                                         UsbRelays.K09, UsbRelays.K10, UsbRelays.K11, UsbRelays.K12, UsbRelays.K13, UsbRelays.K14, UsbRelays.K15, UsbRelays.K16 };
             for(int i=0; i<boxes.Length; i++)
             {
-                boxes[i].Tag = relays[i];
+                //boxes[i].Tag = relays[i];
+                boxes[i].Tag = i;
                 boxes[i].CheckedChanged += Relays_CheckedChanged;
             }
-
         }
 
         /// <summary>
@@ -41,13 +37,24 @@ namespace RedCell.Devices.SainSmart
         {
             try 
             {
-                await _board.Initialize(); 
+                if (Board == null)
+                    throw new Exception("Board property must be set before invoking Initialize method.");
+
+                await Board.Initialize(); 
             }
             catch (RelayBoardException ex)
             {
                 MessageBox.Show(ex.Message, "RelayBoardException", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets the board.
+        /// </summary>
+        /// <value>The board.</value>
+        public IRelayBoard Board { get; set; }
         #endregion
 
         #region Methods
@@ -59,7 +66,15 @@ namespace RedCell.Devices.SainSmart
         async void Relays_CheckedChanged(object sender, EventArgs e)
         {
             var box = sender as CheckBox;
-            await _board.Set((UsbRelays)box.Tag, box.Checked);
+            //await (Board as UsbRelayBoard).Set((UsbRelays)box.Tag, box.Checked);
+            int index = (int)box.Tag;
+
+            // USB board is zero-indexed.
+            // Net board is one-indexed.
+            if (Board is UsbRelayBoard)
+                index = (int) Math.Pow(2, index);
+
+            await Board.Set(index, box.Checked);
         }
         #endregion
     }

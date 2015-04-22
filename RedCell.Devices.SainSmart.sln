@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedCell.Devices.SainSmart",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedCell.Devices.SainSmart.UI", "RedCell.Devices.SainSmart.UI\RedCell.Devices.SainSmart.UI.csproj", "{E3E99DC0-EE5A-4B7B-A746-83D3BE37481D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8513271-B3DD-4B73-9E16-745C1C6711F6}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E0D8732A-E7F0-4FE2-9986-5813E2B74CC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{C67E0E86-4B70-4249-8C14-E39C2FB9F383}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +34,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0D8732A-E7F0-4FE2-9986-5813E2B74CC9} = {E8513271-B3DD-4B73-9E16-745C1C6711F6}
+		{C67E0E86-4B70-4249-8C14-E39C2FB9F383} = {E0D8732A-E7F0-4FE2-9986-5813E2B74CC9}
 	EndGlobalSection
 EndGlobal

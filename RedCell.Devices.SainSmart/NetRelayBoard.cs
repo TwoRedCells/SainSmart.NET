@@ -28,12 +28,12 @@ namespace RedCell.Devices.SainSmart
         {
             switch(model)
             {
-                case Models.Relay8:
+                case Models.Net8:
                     Port = 30000;
                     _states = new bool[8];
                     _relayCount = 8;
                     break;
-                case Models.Relay16:
+                case Models.Net16:
                     Port = 3000;
                     _states = new bool[16];
                     _relayCount = 16;
@@ -97,7 +97,7 @@ namespace RedCell.Devices.SainSmart
             // Ping the host.
             using (var ping = new Ping())
             {
-                PingReply reply = await ping.SendPingAsync(Host, 10000);
+                PingReply reply = await ping.SendPingAsync(Host, 2000);
                 if (reply.Status != IPStatus.Success)
                     throw new RelayBoardException("The relay board host is not responding on the network.");
             }

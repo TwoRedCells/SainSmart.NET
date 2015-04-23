@@ -40,10 +40,12 @@
     <Compile Include="Models.cs" />
     <Compile Include="NetRelayBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsbRelays.cs" />
+    <Compile Include="Relays.cs" />
     <Compile Include="UsbRelayBoard.cs" />
     <Compile Include="RelayBoardException.cs" />
-    <Compile Include="NetRelays.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SainSmart.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

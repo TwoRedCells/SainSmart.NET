@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RedCell.Devices.SainSmart.UsbRelayBoard">
+    <Position X="2.5" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>MEAAAAIAABACBQAADAAAAAAgAAAAAAAAAAACAAAEAAA=</HashCode>
+      <FileName>UsbRelayBoard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RedCell.Devices.SainSmart.NetRelayBoard">
+    <Position X="2.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EEAAAAAAAAAABQAAGAAAAAAACAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NetRelayBoard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RedCell.Devices.RelayBoardException">
+    <Position X="5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RelayBoardException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="RedCell.Devices.SainSmart.IRelayBoard">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABQAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRelayBoard.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="RedCell.Devices.SainSmart.Models">
+    <Position X="5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAACAAAAAAABA=</HashCode>
+      <FileName>Models.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

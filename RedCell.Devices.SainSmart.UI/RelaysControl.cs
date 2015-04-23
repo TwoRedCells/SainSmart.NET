@@ -20,12 +20,12 @@ namespace RedCell.Devices.SainSmart
 
             // Initialize controls
             CheckBox[] boxes = { K01, K02, K03, K04, K05, K06, K07, K08, K09, K10, K11, K12, K13, K14, K15, K16 };
-            UsbRelays[] relays = { UsbRelays.K01, UsbRelays.K02, UsbRelays.K03, UsbRelays.K04, UsbRelays.K05, UsbRelays.K06, UsbRelays.K07, UsbRelays.K08, 
-                                        UsbRelays.K09, UsbRelays.K10, UsbRelays.K11, UsbRelays.K12, UsbRelays.K13, UsbRelays.K14, UsbRelays.K15, UsbRelays.K16 };
+            Relays[] relays = { Relays.K01, Relays.K02, Relays.K03, Relays.K04, Relays.K05, Relays.K06, Relays.K07, Relays.K08, 
+                                        Relays.K09, Relays.K10, Relays.K11, Relays.K12, Relays.K13, Relays.K14, Relays.K15, Relays.K16 };
             for(int i=0; i<boxes.Length; i++)
             {
-                //boxes[i].Tag = relays[i];
-                boxes[i].Tag = i;
+                boxes[i].Tag = relays[i];
+                //boxes[i].Tag = i;
                 boxes[i].CheckedChanged += Relays_CheckedChanged;
             }
         }
@@ -66,15 +66,21 @@ namespace RedCell.Devices.SainSmart
         async void Relays_CheckedChanged(object sender, EventArgs e)
         {
             var box = sender as CheckBox;
-            //await (Board as UsbRelayBoard).Set((UsbRelays)box.Tag, box.Checked);
-            int index = (int)box.Tag;
+            Relays relay = (Relays)box.Tag;
 
-            // USB board is zero-indexed.
-            // Net board is one-indexed.
+            // USB board is zero-indexed and uses a bitmask.
             if (Board is UsbRelayBoard)
-                index = (int) Math.Pow(2, index);
+                await (Board as UsbRelayBoard).Set(relay, box.Checked);
 
-            await Board.Set(index, box.Checked);
+            // Net board is one-indexed and does not have a bitmask, so we need to separate each bit.
+            if (Board is NetRelayBoard)
+            {
+                for (int i = 0; i < 0x10; i++)
+                {
+                    if((((int)relay >> i) & 0x01) == 0x01)
+                        await Board.Set(i, box.Checked);
+                }
+            }
         }
         #endregion
     }

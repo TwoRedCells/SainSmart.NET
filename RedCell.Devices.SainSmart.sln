@@ -16,6 +16,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E0D8732A-E7F0-4FE2-9986-5813E2B74CC9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{C67E0E86-4B70-4249-8C14-E39C2FB9F383}"
+	ProjectSection(SolutionItems) = preProject
+		docs\images\SainSmart.png = docs\images\SainSmart.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

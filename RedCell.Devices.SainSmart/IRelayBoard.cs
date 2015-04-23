@@ -29,11 +29,11 @@ namespace RedCell.Devices.SainSmart
         /// <param name="state">The relay state.</param>
         Task Set(int index, bool state);        
         
- /*       /// <summary>
+        /// <summary>
         /// Sets the relay at the specified index to the specified value.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="state">The relay state.</param>
-        Task Set(NetRelays index, bool state);*/
+        Task Set(Relays index, bool state);
     }
 }

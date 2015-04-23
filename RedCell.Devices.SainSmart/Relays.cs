@@ -3,7 +3,7 @@
 namespace RedCell.Devices.SainSmart
 {
     [Flags]
-    public enum UsbRelays : uint
+    public enum Relays : uint
     {
         Unknown = 0x0000,
         K01 = 0x0001,

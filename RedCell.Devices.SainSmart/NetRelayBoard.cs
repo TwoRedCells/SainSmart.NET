@@ -62,7 +62,7 @@ namespace RedCell.Devices.SainSmart
         /// </summary>
         /// <param name="relay">The relay.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool this[NetRelays relay]
+        public bool this[Relays relay]
         {
             get { return this[(UInt16)relay - 1]; }
             set { this[(UInt16)relay - 1] = value; }
@@ -108,7 +108,7 @@ namespace RedCell.Devices.SainSmart
         /// </summary>
         /// <param name="relay">The relay.</param>
         /// <param name="state">if set to <c>true</c> [state].</param>
-        public async Task Set(NetRelays relay, bool state)
+        public async Task Set(Relays relay, bool state)
         {
             await Set((UInt16)relay, state);
         }

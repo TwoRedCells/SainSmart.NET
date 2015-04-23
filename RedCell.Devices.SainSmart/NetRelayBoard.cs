@@ -110,7 +110,12 @@ namespace RedCell.Devices.SainSmart
         /// <param name="state">if set to <c>true</c> [state].</param>
         public async Task Set(Relays relay, bool state)
         {
-            await Set((UInt16)relay, state);
+            // Net board is one-indexed and does not have a bitmask, so we need to separate each bit.
+            for (int i = 0; i < 0x10; i++)
+            {
+                if ((((int)relay >> i) & 0x01) == 0x01)
+                    await Set(i, state);
+            }
         }
 
         /// <summary>

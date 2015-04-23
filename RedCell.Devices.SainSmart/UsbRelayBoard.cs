@@ -164,10 +164,11 @@ namespace RedCell.Devices.SainSmart
         /// </summary>
         /// <param name="relay"></param>
         /// <param name="state"></param>
-        public async Task Set(int index, bool state)
+        public async Task Set(Relays relays, bool state)
         {
             await Task.Run(() =>
             {
+                int index = (int)relays;
                 uint numBytes = 1;
                 uint relayAddr = (uint)index;
                 byte[] @out = { 0x00 };
@@ -195,10 +196,10 @@ namespace RedCell.Devices.SainSmart
         /// </summary>
         /// <param name="relay">The relay.</param>
         /// <param name="state">if set to <c>true</c> [state].</param>
-        public async Task Set(Relays relay, bool state)
+        public async Task Set(int index, bool state)
         {
-            int index = (int)relay;
-            await Set(index, state);
+            index = (int) Math.Pow(2, index);
+            await Set((Relays)index, state);
         }
         #endregion
     }

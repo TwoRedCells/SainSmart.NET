@@ -25,7 +25,6 @@ namespace RedCell.Devices.SainSmart
             for(int i=0; i<boxes.Length; i++)
             {
                 boxes[i].Tag = relays[i];
-                //boxes[i].Tag = i;
                 boxes[i].CheckedChanged += Relays_CheckedChanged;
             }
         }
@@ -68,19 +67,7 @@ namespace RedCell.Devices.SainSmart
             var box = sender as CheckBox;
             Relays relay = (Relays)box.Tag;
 
-            // USB board is zero-indexed and uses a bitmask.
-            if (Board is UsbRelayBoard)
-                await (Board as UsbRelayBoard).Set(relay, box.Checked);
-
-            // Net board is one-indexed and does not have a bitmask, so we need to separate each bit.
-            if (Board is NetRelayBoard)
-            {
-                for (int i = 0; i < 0x10; i++)
-                {
-                    if((((int)relay >> i) & 0x01) == 0x01)
-                        await Board.Set(i, box.Checked);
-                }
-            }
+            await Board.Set(relay, box.Checked);
         }
         #endregion
     }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3E99DC0-EE5A-4B7B-A746-83D3BE37481D}</ProjectGuid>
+    <ProjectGuid>{D1A0DC6C-3018-4BA5-945F-5E97D03182AC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RedCell.Devices.SainSmart</RootNamespace>
